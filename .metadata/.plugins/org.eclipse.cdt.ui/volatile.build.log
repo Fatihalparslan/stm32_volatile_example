@@ -1,0 +1,53 @@
+00:54:44 **** Incremental Build of configuration Debug for project volatile ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:70:28: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+   70 |     sprintf(msg," x value:%d",x);
+      |                           ~^  ~
+      |                            |  |
+      |                            |  uint32_t {aka volatile long unsigned int}
+      |                            int
+      |                           %ld
+../Src/main.c:74:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'volatile long unsigned int'} [-Wformat=]
+   74 |      sprintf(msg," x value:%d",x);
+      |                            ~^  ~
+      |                             |  |
+      |                             |  uint32_t {aka volatile long unsigned int}
+      |                             int
+      |                            %ld
+../Src/main.c:70:21: warning: ' x value:' directive writing 9 bytes into a region of size 3 [-Wformat-overflow=]
+   70 |     sprintf(msg," x value:%d",x);
+      |                  ~~~^~~~~~
+../Src/main.c:70:17: note: using the range [-2147483648, 2147483647] for directive argument
+   70 |     sprintf(msg," x value:%d",x);
+      |                 ^~~~~~~~~~~~~
+../Src/main.c:70:5: note: 'sprintf' output between 11 and 21 bytes into a destination of size 3
+   70 |     sprintf(msg," x value:%d",x);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:74:22: warning: ' x value:' directive writing 9 bytes into a region of size 3 [-Wformat-overflow=]
+   74 |      sprintf(msg," x value:%d",x);
+      |                   ~~~^~~~~~
+../Src/main.c:74:18: note: using the range [-2147483648, 2147483647] for directive argument
+   74 |      sprintf(msg," x value:%d",x);
+      |                  ^~~~~~~~~~~~~
+../Src/main.c:74:6: note: 'sprintf' output between 11 and 21 bytes into a destination of size 3
+   74 |      sprintf(msg," x value:%d",x);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "volatile.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\acer\OneDrive\Desktop\Drive\udemy_mastering_embedded_systems_course\STM32F103\volatile_example\volatile\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="volatile.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: volatile.elf
+ 
+arm-none-eabi-size   volatile.elf 
+arm-none-eabi-objdump -h -S  volatile.elf  > "volatile.list"
+arm-none-eabi-objcopy  -O binary  volatile.elf  "volatile.bin"
+   text	   data	    bss	    dec	    hex	filename
+   5972	    108	   1596	   7676	   1dfc	volatile.elf
+Finished building: default.size.stdout
+ 
+Finished building: volatile.bin
+Finished building: volatile.list
+ 
+ 
+
+00:54:45 Build Finished. 0 errors, 4 warnings. (took 636ms)
+

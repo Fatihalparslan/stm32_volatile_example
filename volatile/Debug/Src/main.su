@@ -1,0 +1,4 @@
+main.c:34:6:ITM_SendChar	16	static
+main.c:50:5:_write	32	static
+main.c:61:6:delay_us	24	static
+main.c:67:5:main	16	static
